@@ -36,15 +36,14 @@ jobs:
     - name: B)npm start
       run: |
         node app.js
-    - name: C) git push
-      env: 
-          GITHUB_REPO: ${{ secrets.REPO_NAME }}
+    - name: C)Commit files
       run: |
-        cd result
-        git init
-        git config user.name "GitHub Actions"
-        git config user.email "noreply@github.com"
-        git add .
-        git commit -m "update `date +'%Y-%m-%d %H:%M:%S'`";
-        git remote add origin https://${{ secrets.DEPLOY_TOKEN }}@$GITHUB_REPO
-        git push -f origin master
+        git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "github-actions[bot]"
+        git commit -m "Add changes" -a
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.DEPLOY_TOKEN }}
+        branch: ${{ github.ref }}
+  
