@@ -30,8 +30,8 @@ async function getsheet() {
   const arr = [];
   rows.forEach(row => {
     arr.push({
-      name: row['姓名'],
-      score: row['分數'],
+      number: row['Number'],
+      name: row['Name'],
     })
   })
   
