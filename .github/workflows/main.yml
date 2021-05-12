@@ -38,7 +38,7 @@ jobs:
         node app.js
     - name: C) git push
       env: 
-          GITHUB_REPO: ${{ secrets.GOOGLESHEETS }}
+          GITHUB_REPO: ${{ secrets.REPO_NAME }}
       run: |
         cd result
         git init
