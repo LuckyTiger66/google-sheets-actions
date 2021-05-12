@@ -50,8 +50,8 @@ jobs:
         git add .
         git commit -m "Add changes";
     - name: Push changes
-      uses: ad-m/github-push-action@master
+      uses: ad-m/github-push-action@v0.5.0
       with:
         github_token: ${{ secrets.DEPLOY_TOKEN }}
         branch: ${{ github.ref }}
-        force: true
+        
