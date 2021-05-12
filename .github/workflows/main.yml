@@ -40,8 +40,6 @@ jobs:
       run: |
         node app.js
     - name: C) git Commit 
-      env: 
-          GITHUB_REPO: ${{ secrets.REPO_NAME }}
       run: |
         cd result
         git init
@@ -50,8 +48,11 @@ jobs:
         git add .
         git commit -m "Add changes";
     - name: Push changes
-      uses: ad-m/github-push-action@v0.5.0
-      with:
-        github_token: ${{ secrets.DEPLOY_TOKEN }}
-        branch: ${{ github.ref }}
+      env: 
+          GITHUB_REPO: ${{ secrets.REPO_NAME }}
+      run: |
+        git remote add origin https://${{ secrets.DEPLOY_TOKEN }}@$GITHUB_REPO
+        git push -f origin master
+      
+    
         
