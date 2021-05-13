@@ -1,8 +1,12 @@
 name: 'cron/30'
 
-on:
+on: 
+  push:
+    branches:
+      - master
+      
   schedule:
-    - cron:  '*/5 * * * *'
+    - cron:  '30 * * * *'
    
 jobs:
   build:
@@ -11,7 +15,7 @@ jobs:
 
     steps:
     - name: Checkout
-      uses: actions/checkout@v1
+      uses: actions/checkout@v2
     - name: Use Node.js 14.x
       uses: actions/setup-node@v1
       with:
@@ -36,9 +40,7 @@ jobs:
     - name: B)npm start
       run: |
         node app.js
-    - name: C) git push
-      env: 
-          GITHUB_REPO: ${{ secrets.REPO_NAME }}
+    - name: C) Commit files
       run: |
         cd result
         git init
@@ -46,6 +48,8 @@ jobs:
         git config user.email "noreply@github.com"
         git add .
         git commit -m "update `date +'%Y-%m-%d %H:%M:%S'`";
-        git remote add origin https://${{ secrets.DEPLOY_TOKEN }}@$GITHUB_REPO
-        git push -f origin master
-    
+    - name: Push changes  
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.DEPLOY_TOKEN }}
+        force: true
