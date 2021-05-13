@@ -45,7 +45,7 @@ jobs:
     - name: C) detect changed files Auto commit & push
       uses: stefanzweifel/git-auto-commit-action@v4
       with:
-        commit_message: "update `date +'%Y-%m-%d %H:%M:%S'`"
+        commit_message: Automated Change
         commit_user_name: GitHub Actions
         commit_user_email: noreply@github.com
         push_options: '--force'
