@@ -4,10 +4,7 @@ on:
   push:
     branches:
       - master
-      
-  schedule:
-    - cron:  '30 * * * *'
-   
+
 jobs:
   build:
 
@@ -42,6 +39,7 @@ jobs:
         node app.js
     - name: C) Commit files
       run: |
+        cd result
         git init
         git config user.name "GitHub Actions"
         git config user.email "noreply@github.com"
@@ -51,4 +49,4 @@ jobs:
       uses: ad-m/github-push-action@master
       with:
         github_token: ${{ secrets.DEPLOY_TOKEN }}
-        force: true
+      
