@@ -42,8 +42,8 @@ jobs:
         node app.js
     - name: C) Commit files
       run: |
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
+        git config user.name "GitHub Actions"
+        git config user.email "noreply@github.com"
         git add .
         git commit -m "update `date +'%Y-%m-%d %H:%M:%S'`";
     - name: Push changes  
