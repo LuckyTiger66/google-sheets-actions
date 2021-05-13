@@ -1,7 +1,7 @@
-name: 'cron/5'
+name: 'cron/30'
 on:      
   schedule:
-    - cron:  '*/5 * * * *'
+    - cron:  '*/30 * * * *'
    
 jobs:
   build:
