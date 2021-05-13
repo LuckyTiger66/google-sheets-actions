@@ -1,10 +1,5 @@
 name: 'cron/5'
-
-on: 
-  push:
-    branches:
-      - master
-      
+on:      
   schedule:
     - cron:  '5 * * * *'
    
@@ -48,4 +43,5 @@ jobs:
         commit_message: Automated Change
         commit_user_name: GitHub Actions
         commit_user_email: noreply@github.com
+        commit_author: Author <actions@github.com>
         push_options: '--force'
