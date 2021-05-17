@@ -24,14 +24,16 @@ async function getsheet() {
   const sheet = doc.sheetsByIndex[0];
 
   // select column
-  await sheet.loadCells('A1:B335');
+  await sheet.loadCells('A1:Z1000');
   const rows = await sheet.getRows();
 
   const arr = [];
   rows.forEach(row => {
     arr.push({
-      number: row['Number'],
-      name: row['Name'],
+      name: row['請填寫您的暱稱'],
+      week1: row['你的第一週主線做的 LV 是？(選填，5/12 才填寫)'],
+      week1Url: row['請提交您的第一週的作業或 BLOG 網址(選填，5/12 才填寫)'],
+      everyday: row['您的每日任務目前做到幾月幾號？'],
     })
   })
   
